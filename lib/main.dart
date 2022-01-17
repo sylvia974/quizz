@@ -6,12 +6,22 @@ void main() {
 
 class quizz extends StatefulWidget {
   const quizz({Key? key}) : super(key: key);
-
   @override
   _quizzState createState() => _quizzState();
 }
 
 class _quizzState extends State<quizz> {
+  List<Icon> score =[
+    Icon(
+      Icons.check,
+      color: Colors.green,
+    ),
+
+    Icon(
+      Icons.close,
+      color: Colors.red,
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -56,61 +66,24 @@ class _quizzState extends State<quizz> {
                   ),
                 ),
                 Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: TextButton(
-                      onPressed: null,
-                      style: TextButton.styleFrom(
-                        backgroundColor: Colors.red,
-                      ),
-                      child: Text('Faux',
-                          style: TextStyle(
-                            color:Colors.white,
-                            fontSize: 20
-                          ),
-                      ),
+                  child: TextButton(
+                    onPressed: null,
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.red,
+                    ),
+                    child: Text('Faux',
+                        style: TextStyle(
+                          color:Colors.white,
+                          fontSize: 20
+                        ),
                     ),
                   ),
                 ),
 
                 Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: Icon(
-                        Icons.check,
-                        color: Colors.green,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: Icon(
-                        Icons.check,
-                        color: Colors.green,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: Icon(
-                        Icons.close,
-                        color: Colors.red,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: Icon(
-                        Icons.check,
-                        color: Colors.green,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: Icon(
-                        Icons.check,
-                        color: Colors.green,
-                      ),
-                    ),
-                  ],
+                  children:
+                   score
+
                 ),
               ],
             ),
