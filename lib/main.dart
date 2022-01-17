@@ -72,6 +72,46 @@ class _quizzState extends State<quizz> {
                     ),
                   ),
                 ),
+
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Icon(
+                        Icons.check,
+                        color: Colors.green,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Icon(
+                        Icons.check,
+                        color: Colors.green,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Icon(
+                        Icons.close,
+                        color: Colors.red,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Icon(
+                        Icons.check,
+                        color: Colors.green,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Icon(
+                        Icons.check,
+                        color: Colors.green,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
