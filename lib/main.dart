@@ -16,53 +16,64 @@ class _quizzState extends State<quizz> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.grey.shade900,
         body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
-                flex: 5,
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Center(
-                    child: Text(
-                      'Voici le texte de la question',
-                      style: TextStyle(
-                        color: Colors.white,
-                        letterSpacing: 2.5,
-                        fontWeight: FontWeight.bold,
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(
+                  flex: 5,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Center(
+                      child: Text(
+                        'Voici le texte de la question',
+                        style: TextStyle(
+                          color: Colors.white,
+                          letterSpacing: 2.5,
+                          fontSize: 25.0,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: TextButton(
-                    onPressed: null,
-                    style: TextButton.styleFrom(
-                      backgroundColor: Colors.red,
-                    ),
-                    child: Text('Vrai'),
-                  ),
-                ),
-              ),
-              Expanded(
+                Expanded(
                   child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: TextButton(
-                  child: Text('Faux'),
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.green,
+                    padding: const EdgeInsets.all(15.0),
+                    child: TextButton(
+                      onPressed: null,
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.green,
+                      ),
+                      child: Text('Vrai',
+                      style: TextStyle(
+                        color:Colors.white,
+                        fontSize: 20
+                      ),
+                      ),
+                    ),
                   ),
-                  onPressed: () {
-                    print('Pressed');
-                  },
                 ),
-              )),
-            ],
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: TextButton(
+                      onPressed: null,
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.red,
+                      ),
+                      child: Text('Faux',
+                          style: TextStyle(
+                            color:Colors.white,
+                            fontSize: 20
+                          ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
