@@ -22,7 +22,7 @@ class _quizzState extends State<quizz> {
 ];
 
 List<String> questions = ["Question 1 ?","Question 2 ?","Question 3 ?"];
-
+int questionNumber = 0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,7 +38,7 @@ List<String> questions = ["Question 1 ?","Question 2 ?","Question 3 ?"];
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal:10.0),
                   child: Center(
-                    child: Text( questions[1],
+                    child: Text( questions[questionNumber],
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -59,7 +59,7 @@ List<String> questions = ["Question 1 ?","Question 2 ?","Question 3 ?"];
                       onPressed: () {
                       setState(() {
                         suiviscore.add(Icon(Icons.check,color:Colors.green));
-
+                        questionNumber++;
                       });
                       },
                       child: Text("Vrai",
@@ -82,7 +82,7 @@ List<String> questions = ["Question 1 ?","Question 2 ?","Question 3 ?"];
                     onPressed: () {
                       setState(() {
                         suiviscore.add(Icon(Icons.close,color:Colors.red));
-
+                        questionNumber++;
                       });
                     },
 
