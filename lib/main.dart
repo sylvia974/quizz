@@ -13,16 +13,13 @@ class quizz extends StatefulWidget {
 
 class _quizzState extends State<quizz> {
 
-  List<Icon> suiviscore = [
-  Icon(Icons.check,color:Colors.green),
-  Icon(Icons.check,color:Colors.green),
-  Icon(Icons.close,color:Colors.red),
-  Icon(Icons.check,color:Colors.green),
-  Icon(Icons.check,color:Colors.green),
-];
+  List<Icon> suiviscore = [];
 
-List<String> questions = ["Question 1 ?","Question 2 ?","Question 3 ?"];
+List<String> questions = ["Le piton des neiges est un volcan de la Réunion  ?","Flutter permet de faire des applications web également ?","Php est le language utilisé par Flutter ?","Question 4 ?"];
+List<bool> reponses = [ true , false, false, false];
 int questionNumber = 0;
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -57,8 +54,12 @@ int questionNumber = 0;
                       backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
                     ),
                       onPressed: () {
+                      bool bonnereponse = reponses[questionNumber];
                       setState(() {
-                        suiviscore.add(Icon(Icons.check,color:Colors.green));
+                        if(bonnereponse){
+                          suiviscore.add(Icon(Icons.check,color:Colors.green));
+                        }else{suiviscore.add(Icon(Icons.close,color:Colors.red));
+                        }
                         questionNumber++;
                       });
                       },
@@ -80,8 +81,12 @@ int questionNumber = 0;
                       backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
                     ),
                     onPressed: () {
+                      bool bonnereponse = reponses[questionNumber];
                       setState(() {
-                        suiviscore.add(Icon(Icons.close,color:Colors.red));
+                        if(bonnereponse == false){
+                          suiviscore.add(Icon(Icons.check,color:Colors.green));
+                        }else{suiviscore.add(Icon(Icons.close,color:Colors.red));
+                        }
                         questionNumber++;
                       });
                     },
