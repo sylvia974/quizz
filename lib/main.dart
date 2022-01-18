@@ -20,6 +20,9 @@ class _quizzState extends State<quizz> {
   Icon(Icons.check,color:Colors.green),
   Icon(Icons.check,color:Colors.green),
 ];
+
+List<String> questions = ["Question 1 ?","Question 2 ?","Question 3 ?"];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -35,7 +38,7 @@ class _quizzState extends State<quizz> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal:10.0),
                   child: Center(
-                    child: Text("Ici sera affiché les questions",
+                    child: Text( questions[1],
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -98,7 +101,6 @@ class _quizzState extends State<quizz> {
                 ),
               )
             ],
-
           ),
         ),
       ),
