@@ -18,7 +18,18 @@ class _quizzState extends State<quizz> {
   List<Icon> suiviscore = [];
 
 
-
+checkAnswer(bool x){
+  bool bonnereponse = qb.getQuestionReponse();
+  setState(() {
+    if (bonnereponse == x) {
+      suiviscore
+          .add(Icon(Icons.check, color: Colors.green));
+    } else {
+      suiviscore.add(Icon(Icons.close, color: Colors.red));
+    }
+    qb.nextQuestion();
+  });
+}
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -53,16 +64,7 @@ class _quizzState extends State<quizz> {
                           MaterialStateProperty.all<Color>(Colors.green),
                     ),
                     onPressed: () {
-                      bool bonnereponse = qb.getQuestionReponse();
-                      setState(() {
-                        if (bonnereponse) {
-                          suiviscore
-                              .add(Icon(Icons.check, color: Colors.green));
-                        } else {
-                          suiviscore.add(Icon(Icons.close, color: Colors.red));
-                        }
-                        qb.nextQuestion();
-                      });
+                      checkAnswer(true);
                     },
                     child: Text(
                       "Vrai",
@@ -83,16 +85,7 @@ class _quizzState extends State<quizz> {
                           MaterialStateProperty.all<Color>(Colors.red),
                     ),
                     onPressed: () {
-                      bool bonnereponse = qb.getQuestionReponse();
-                      setState(() {
-                        if (bonnereponse == false) {
-                          suiviscore
-                              .add(Icon(Icons.check, color: Colors.green));
-                        } else {
-                          suiviscore.add(Icon(Icons.close, color: Colors.red));
-                        }
-                        qb.nextQuestion();
-                      });
+                      checkAnswer(false);
                     },
                     child: Text(
                       "Faux",
