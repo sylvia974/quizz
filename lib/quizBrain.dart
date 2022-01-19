@@ -6,10 +6,19 @@ class QuizBrain{
     Question("Flutter permet de faire des applications web également ?",true ),
     Question(  "Php est le language utilisé par Flutter ?", false ),
   ];
- String getQuestionEnonce(int questionNumber){
-    return _questions[questionNumber].enonce;
+  int _questionNumber = 0;
+
+ String getQuestionEnonce(){
+    return _questions[_questionNumber].enonce;
   }
-  bool getQuestionReponse(int questionNumber){
-   return _questions[questionNumber].reponse;
+  bool getQuestionReponse(){
+   return _questions[_questionNumber].reponse;
   }
+
+
+void nextQuestion(){
+  if(_questionNumber< _questions.length -1){
+    _questionNumber++;
+  }
+}
 }

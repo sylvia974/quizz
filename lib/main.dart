@@ -17,7 +17,7 @@ class quizz extends StatefulWidget {
 class _quizzState extends State<quizz> {
   List<Icon> suiviscore = [];
 
-  int questionNumber = 0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class _quizzState extends State<quizz> {
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Center(
                     child: Text(
-                      qb.getQuestionEnonce(questionNumber),
+                      qb.getQuestionEnonce(),
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
@@ -53,7 +53,7 @@ class _quizzState extends State<quizz> {
                           MaterialStateProperty.all<Color>(Colors.green),
                     ),
                     onPressed: () {
-                      bool bonnereponse = qb.getQuestionReponse(questionNumber);
+                      bool bonnereponse = qb.getQuestionReponse();
                       setState(() {
                         if (bonnereponse) {
                           suiviscore
@@ -61,7 +61,7 @@ class _quizzState extends State<quizz> {
                         } else {
                           suiviscore.add(Icon(Icons.close, color: Colors.red));
                         }
-                        questionNumber++;
+                        qb.nextQuestion();
                       });
                     },
                     child: Text(
@@ -83,7 +83,7 @@ class _quizzState extends State<quizz> {
                           MaterialStateProperty.all<Color>(Colors.red),
                     ),
                     onPressed: () {
-                      bool bonnereponse = qb.getQuestionReponse(questionNumber);
+                      bool bonnereponse = qb.getQuestionReponse();
                       setState(() {
                         if (bonnereponse == false) {
                           suiviscore
@@ -91,7 +91,7 @@ class _quizzState extends State<quizz> {
                         } else {
                           suiviscore.add(Icon(Icons.close, color: Colors.red));
                         }
-                        questionNumber++;
+                        qb.nextQuestion();
                       });
                     },
                     child: Text(
