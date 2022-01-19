@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'question.dart';
+import 'quizBrain.dart';
+
+QuizBrain qb = QuizBrain();
 
 void main() {
   runApp(const quizz());
@@ -16,11 +18,6 @@ class _quizzState extends State<quizz> {
 
   List<Icon> suiviscore = [];
 
-  List<Question> questions = [
-    Question("Le piton des neiges est un volcan de la Réunion  ?", true ),
-    Question("Flutter permet de faire des applications web également ?",true ),
-    Question(  "Php est le language utilisé par Flutter ?", false ),
-  ];
 
 int questionNumber = 0;
 
@@ -40,7 +37,7 @@ int questionNumber = 0;
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal:10.0),
                   child: Center(
-                    child: Text( questions[questionNumber].enonce,
+                    child: Text( qb.questions[questionNumber].enonce,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -59,7 +56,7 @@ int questionNumber = 0;
                       backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
                     ),
                       onPressed: () {
-                      bool bonnereponse = questions[questionNumber].reponse;
+                      bool bonnereponse = qb.questions[questionNumber].reponse;
                       setState(() {
                         if(bonnereponse){
                           suiviscore.add(Icon(Icons.check,color:Colors.green));
@@ -86,7 +83,7 @@ int questionNumber = 0;
                       backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
                     ),
                     onPressed: () {
-                      bool bonnereponse = questions[questionNumber].reponse;
+                      bool bonnereponse = qb.questions[questionNumber].reponse;
                       setState(() {
                         if(bonnereponse == false){
                           suiviscore.add(Icon(Icons.check,color:Colors.green));
