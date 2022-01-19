@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'question.dart';
 
 void main() {
   runApp(const quizz());
@@ -15,8 +16,12 @@ class _quizzState extends State<quizz> {
 
   List<Icon> suiviscore = [];
 
-List<String> questions = ["Le piton des neiges est un volcan de la Réunion  ?","Flutter permet de faire des applications web également ?","Php est le language utilisé par Flutter ?","Question 4 ?"];
-List<bool> reponses = [ true , false, false, false];
+  List<Question> questions = [
+    Question("Le piton des neiges est un volcan de la Réunion  ?", true ),
+    Question("Flutter permet de faire des applications web également ?",true ),
+    Question(  "Php est le language utilisé par Flutter ?", false ),
+  ];
+
 int questionNumber = 0;
 
 
@@ -35,7 +40,7 @@ int questionNumber = 0;
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal:10.0),
                   child: Center(
-                    child: Text( questions[questionNumber],
+                    child: Text( questions[questionNumber].enonce,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -54,7 +59,7 @@ int questionNumber = 0;
                       backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
                     ),
                       onPressed: () {
-                      bool bonnereponse = reponses[questionNumber];
+                      bool bonnereponse = questions[questionNumber].reponse;
                       setState(() {
                         if(bonnereponse){
                           suiviscore.add(Icon(Icons.check,color:Colors.green));
@@ -81,7 +86,7 @@ int questionNumber = 0;
                       backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
                     ),
                     onPressed: () {
-                      bool bonnereponse = reponses[questionNumber];
+                      bool bonnereponse = questions[questionNumber].reponse;
                       setState(() {
                         if(bonnereponse == false){
                           suiviscore.add(Icon(Icons.check,color:Colors.green));
