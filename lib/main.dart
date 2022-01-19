@@ -15,12 +15,9 @@ class quizz extends StatefulWidget {
 }
 
 class _quizzState extends State<quizz> {
-
   List<Icon> suiviscore = [];
 
-
-int questionNumber = 0;
-
+  int questionNumber = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -31,80 +28,85 @@ int questionNumber = 0;
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-
               Expanded(
                 flex: 5,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:10.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Center(
-                    child: Text( qb.questions[questionNumber].enonce,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25.0,
-                    ),
-                    ),
-                  ),
-                ),
-              ),
-
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: TextButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
-                    ),
-                      onPressed: () {
-                      bool bonnereponse = qb.questions[questionNumber].reponse;
-                      setState(() {
-                        if(bonnereponse){
-                          suiviscore.add(Icon(Icons.check,color:Colors.green));
-                        }else{suiviscore.add(Icon(Icons.close,color:Colors.red));
-                        }
-                        questionNumber++;
-                      });
-                      },
-                      child: Text("Vrai",
-                      style: TextStyle(color:Colors.white,
+                    child: Text(
+                      qb.getQuestionEnonce(questionNumber),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
                         fontSize: 25.0,
                       ),
-                      ),
-
+                    ),
                   ),
                 ),
               ),
-
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: TextButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.green),
                     ),
                     onPressed: () {
-                      bool bonnereponse = qb.questions[questionNumber].reponse;
+                      bool bonnereponse = qb.getQuestionReponse(questionNumber);
                       setState(() {
-                        if(bonnereponse == false){
-                          suiviscore.add(Icon(Icons.check,color:Colors.green));
-                        }else{suiviscore.add(Icon(Icons.close,color:Colors.red));
+                        if (bonnereponse) {
+                          suiviscore
+                              .add(Icon(Icons.check, color: Colors.green));
+                        } else {
+                          suiviscore.add(Icon(Icons.close, color: Colors.red));
                         }
                         questionNumber++;
                       });
                     },
-
-                    child: Text("Faux",
-                      style: TextStyle(color:Colors.white,
+                    child: Text(
+                      "Vrai",
+                      style: TextStyle(
+                        color: Colors.white,
                         fontSize: 25.0,
                       ),
                     ),
-
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: TextButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.red),
+                    ),
+                    onPressed: () {
+                      bool bonnereponse = qb.getQuestionReponse(questionNumber);
+                      setState(() {
+                        if (bonnereponse == false) {
+                          suiviscore
+                              .add(Icon(Icons.check, color: Colors.green));
+                        } else {
+                          suiviscore.add(Icon(Icons.close, color: Colors.red));
+                        }
+                        questionNumber++;
+                      });
+                    },
+                    child: Text(
+                      "Faux",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25.0,
+                      ),
+                    ),
                   ),
                 ),
               ),
               Expanded(
                 child: Row(
-                  children:suiviscore,
+                  children: suiviscore,
                 ),
               )
             ],
